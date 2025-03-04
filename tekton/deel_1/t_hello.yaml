@@ -1,11 +1,14 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: hello
+  name: goodbey
 spec:
+  params:
+    - name: username
+      type: string
   steps:
-    - name: say-hello
+    - name: say-goodbey
       image: docker/whalesay
       script: |
-        #!/usr/bin/env sh
-        cowsay "Hello Tekton"
+        #!/usr/bin/env
+        cowsay "Goodbye $(params.username)"
